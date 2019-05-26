@@ -1,7 +1,7 @@
 from os.path import dirname, abspath, join
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
+BASE_DIR = dirname(dirname(abspath(__file__)))
 ROOT = lambda *args: join(BASE_DIR, *args)
 
 
@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
     'timetable',
 ]
 
@@ -106,6 +107,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+STATIC_ROOT = ''
 
 STATIC_URL = '/static/'
 
