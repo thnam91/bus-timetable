@@ -1,0 +1,133 @@
+{% extends 'timetable/layout.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<div class="alert alert-danger" role="alert" align="center">
+    현재 버전은 2019년 6월 1일을 기준으로 작성되었습니다. 이후 마을버스 시간표가 변경되었다면, 카카오톡 thnam91으로 알려주세요.
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-light" align="center">
+        <tr>
+            <th scope="col">시간</th>
+            <th scope="col" colspan="3">19번<br/>(월~토, 오리/대림)</th>
+            <th scope="col" colspan="2">19번<br/>(공휴일, 대림)</th>
+            <th scope="col" colspan="2">19번<br/>(공휴일, 오리)</th>
+            <th scope="col" colspan="3">58-2번<br/>(월~금, 대림)</th>
+            <th scope="col" colspan="3">58-2번<br/>(월~금, 수지구청)</th>
+            <th scope="col" colspan="2">58-2번<br/>(토/일/공휴일, 대림)</th>
+            <th scope="col" colspan="2">58-2번<br/>(토/일/공휴일, 수지구청)</th>
+            <th scope="col" colspan="2">58번<br/>(월~금, 대림)</th>
+            <th scope="col" colspan="2">58번<br/>(토/일/공휴일, 대림)</th>
+        </tr>
+    </thead>
+    <tbody align="center">
+        <tr>
+            <td>06</td>
+            <!-- 19번 -->
+            <td>06:00</td><td>06:20</td><td>06:40</td>
+            <td>06:00</td><td>06:40</td>
+            <td>06:20</td><td></td>
+            <!-- 58-2번 -->
+            <td></td><td>06:30</td><td></td>
+            <td></td><td></td><td>06:50</td>
+            <td></td><td></td>
+            <td></td><td></td>
+            <!-- 58번 -->
+            <td>06:50</td><td></td>
+            <td>06:50</td><td></td>
+        </tr>
+        <tr>
+            <td>07</td>
+            <!-- 19번 -->
+            <td>07:00</td><td>07:20</td><td>07:40</td>
+            <td>07:20</td><td></td>
+            <td>07:00</td><td>07:40</td>
+            <!-- 58-2번 -->
+            <td>07:10</td><td></td><td>07:50</td>
+            <td></td><td>07:30</td><td></td>
+            <td>07:10</td><td>07:50</td>
+            <td>07:30</td><td></td>
+            <!-- 58번 -->
+            <td>07:30</td><td></td>
+            <td>07:30</td><td></td>
+        </tr>
+        <tr>
+            <td>08</td>
+            <!-- 19번 -->
+            <td>08:00</td><td>08:20</td><td>08:40</td>
+            <td>08:00</td><td></td>
+            <td>08:30</td><td></td>
+            <!-- 58-2번 -->
+            <td></td><td>08:30</td><td></td>
+            <td>08:10</td><td></td><td>08:50</td>
+            <td>08:30</td><td></td>
+            <td>08:10</td><td>08:50</td>
+            <!-- 58번 -->
+            <td>08:10</td><td>08:50</td>
+            <td>08:30</td><td></td>
+        </tr>
+        <tr>
+            <td>09</td>
+            <!-- 19번 -->
+            <td>09:00</td><td></td><td>09:40</td>
+            <td>09:00</td><td></td>
+            <td>09:30</td><td></td>
+            <!-- 58-2번 -->
+            <td>09:10</td><td></td><td>09:50</td>
+            <td></td><td>09:30</td><td></td>
+            <td>09:10</td><td>09:50</td>
+            <td>09:30</td><td></td>
+            <!-- 58번 -->
+            <td>09:30</td><td></td>
+            <td>09:30</td><td></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <!-- 19번 -->
+            <td>10:00</td><td>10:20</td><td>10:40</td>
+            <td>10:00</td><td></td>
+            <td>10:30</td><td></td>
+            <!-- 58-2번 -->
+            <td></td><td>10:30</td><td></td>
+            <td>10:10</td><td></td><td>10:50</td>
+            <td>10:30</td><td></td>
+            <td>10:10</td><td>10:50</td>
+            <!-- 58번 -->
+            <td>10:10</td><td>10:50</td>
+            <td>10:10</td><td>10:50</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <!-- 19번 -->
+            <td>11:00</td><td>11:20</td><td>11:40</td>
+            <td>11:00</td><td></td>
+            <td></td><td></td>
+            <!-- 58-2번 -->
+            <td>11:10</td><td></td><td></td>
+            <td></td><td>11:30</td><td></td>
+            <td>11:10</td><td></td>
+            <td>11:30</td><td></td>
+            <!-- 58번 -->
+            <td>11:30</td><td></td>
+            <td>11:30</td><td></td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <!-- 19번 -->
+            <td>12:00</td><td></td><td>12:40</td>
+            <td>12:30</td><td></td>
+            <td>12:00</td><td></td>
+            <!-- 58-2번 -->
+            <td></td><td>12:30</td><td></td>
+            <td></td><td></td><td>12:50</td>
+            <td>12:30</td><td></td>
+            <td>12:50</td><td></td>
+            <!-- 58번 -->
+            <td>12:50</td><td></td>
+            <td>12:50</td><td></td>
+        </tr>
+    </tbody>
+</table>
+{% endblock content %}
