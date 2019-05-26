@@ -33,7 +33,10 @@ def index(request):
        if now <= i:
            remain_time = datetime.timedelta(seconds=int(i-now))
            break
+    h, m, s = str(remain_time).split(':')
 
     return render(request, 'nowbus/index.html', {
-        'remain_time': remain_time,
+        'h': h,
+        'm': m,
+        's': s,
     })
