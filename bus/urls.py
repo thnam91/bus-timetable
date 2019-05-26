@@ -6,5 +6,6 @@ from django.shortcuts import redirect
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('timetable/', include('timetable.urls', namespace='timetable')),
-    path('', lambda r: redirect('timetable:index')),
+    path('nowbus/', include('nowbus.urls', namespace='nowbus')),
+    path('', lambda r: redirect('nowbus:index')),
 ]
