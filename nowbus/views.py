@@ -1,42 +1,51 @@
-import datetime
+from datetime import datetime
 from django.shortcuts import render
+from bus_timetable_var import *
+
 
 def time_to_int(time):
     (h, m, s) = time.split(':')
     return int(h) * 3600 + int(m) * 60 + int(s)
 
+
 def index(request):
-    bus19 = [
-        "06:00:00", "06:20:00", "06:40:00",
-        "07:00:00", "07:20:00", "07:40:00",
-        "08:00:00", "08:20:00", "08:40:00",
-        "09:00:00", "09:20:00", "09:40:00",
-        "10:00:00", "10:20:00", "10:40:00",
-        "11:00:00", "11:20:00", "11:40:00",
-        "12:00:00", "12:20:00", "12:40:00",
-        "13:00:00", "13:20:00", "13:40:00",
-        "14:00:00", "14:20:00", "14:40:00",
-        "15:00:00", "15:20:00", "15:40:00",
-        "16:00:00", "16:20:00", "16:40:00",
-        "17:00:00", "17:20:00", "17:40:00",
-        "18:00:00", "18:20:00", "18:40:00",
-        "19:00:00", "19:20:00", "19:40:00",
-        "20:00:00", "20:20:00", "20:40:00",
-        "21:00:00", "21:20:00", "21:40:00",
-        "22:00:00", "22:20:00", "22:40:00",
-        "23:00:00", "23:20:00", "23:40:00",
-        ]
-    bus19 = [time_to_int(i) for i in bus19]
-    now = time_to_int(datetime.datetime.now().strftime('%H:%M:%S'))
-    remain_time = 0
-    for i in bus19:
-       if now <= i:
-           remain_time = datetime.timedelta(seconds=int(i-now))
-           break
-    h, m, s = str(remain_time).split(':')
+    # 0: 월, 1: 화, 2: 수, 3: 목, 4: 금, 5: 토, 6: 일
+    days = ['월', '화', '수', '목', '금', '토', '일']
+    day = datetime.today().weekday()
+    today = datetime.today().strftime("지금은 %Y년 %m월 %d일 (" + days[day] + "),  %H시 %M분 %S초 입니다.")
+    if day < 5: # 월요일 ~ 금요일
+        bus = [
+            BUS19_WEEKDAY,
+            BUS58_WEEKDAY_SOLMOI,
+            BUS582_WEEKDAY_SOLMOI,
+            BUS582_WEEKDAY_SUJI]
+    elif day == 5: # 토요일
+        bus = [
+            BUS19_WEEKDAY,
+            BUS58_WEEKEND_SOLMOI,
+            BUS582_WEEKEND_SOLMOI,
+            BUS582_WEEKEND_SUJI]
+    else: # 일요일
+        bus = [
+            BUS19_WEEKEND_SOLMOI,
+            BUS19_WEEKEND_ORI,
+            BUS58_WEEKEND_SOLMOI,
+            BUS582_WEEKEND_SOLMOI,
+            BUS582_WEEKEND_SUJI]
+
+    # bus19 = [time_to_int(i) for i in bus19]
+    # print(bus19)
+    # now = time_to_int(datetime.datetime.now().strftime('%H:%M:%S'))
+    # remain_time = 0
+    # for i in bus19:
+    #    if now <= i:
+    #        remain_time = datetime.timedelta(seconds=int(i-now))
+    #        break
+    # h, m, s = str(remain_time).split(':')
 
     return render(request, 'nowbus/index.html', {
-        'h': h,
-        'm': m,
-        's': s,
+        'day': today,
+        'h': 1,
+        'm': 2,
+        's': 3,
     })
