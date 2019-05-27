@@ -1,51 +1,50 @@
-from datetime import datetime
+from itertools import zip_longest
+from datetime import datetime, timedelta
 from django.shortcuts import render
 from bus_timetable_var import *
-
 
 def time_to_int(time):
     (h, m, s) = time.split(':')
     return int(h) * 3600 + int(m) * 60 + int(s)
 
+NOW = time_to_int(datetime.now().strftime('%H:%M:%S'))
+
+def ret_remain(timetable):
+    for j in [time_to_int(i) for i in timetable]:
+        if NOW <= j: return str(timedelta(seconds=int(j-NOW))).split(':')
+
 
 def index(request):
     # 0: 월, 1: 화, 2: 수, 3: 목, 4: 금, 5: 토, 6: 일
     days = ['월', '화', '수', '목', '금', '토', '일']
-    day = datetime.today().weekday()
-    today = datetime.today().strftime("지금은 %Y년 %m월 %d일 (" + days[day] + "),  %H시 %M분 %S초 입니다.")
-    if day < 5: # 월요일 ~ 금요일
-        bus = [
-            BUS19_WEEKDAY,
-            BUS58_WEEKDAY_SOLMOI,
-            BUS582_WEEKDAY_SOLMOI,
-            BUS582_WEEKDAY_SUJI]
-    elif day == 5: # 토요일
-        bus = [
-            BUS19_WEEKDAY,
-            BUS58_WEEKEND_SOLMOI,
-            BUS582_WEEKEND_SOLMOI,
-            BUS582_WEEKEND_SUJI]
-    else: # 일요일
-        bus = [
-            BUS19_WEEKEND_SOLMOI,
-            BUS19_WEEKEND_ORI,
-            BUS58_WEEKEND_SOLMOI,
-            BUS582_WEEKEND_SOLMOI,
-            BUS582_WEEKEND_SUJI]
+    day = days[datetime.today().weekday()]
+    today = datetime.today().strftime("지금은 %Y년 %m월 %d일 (" + day + "),  %H시 %M분 %S초 입니다.")
 
-    # bus19 = [time_to_int(i) for i in bus19]
-    # print(bus19)
-    # now = time_to_int(datetime.datetime.now().strftime('%H:%M:%S'))
-    # remain_time = 0
-    # for i in bus19:
-    #    if now <= i:
-    #        remain_time = datetime.timedelta(seconds=int(i-now))
-    #        break
-    # h, m, s = str(remain_time).split(':')
+    if day in '월화수목금':
+        h19s, m19s, s19s = ret_remain(BUS19_WEEKDAY_SOLMOI)
+        h19o, m19o, s19o = ret_remain(BUS19_WEEKDAY_ORI)
+        h58s, m58s, s58s = ret_remain(BUS58_WEEKDAY_SOLMOI)
+        h582s, m582s, s582s = ret_remain(BUS582_WEEKDAY_SOLMOI)
+        h582g, m582g, s582g = ret_remain(BUS582_WEEKDAY_GOOCHEONG)
+    if day == '토':
+        h19s, m19s, s19s = ret_remain(BUS19_WEEKDAY_SOLMOI)
+        h19o, m19o, s19o = ret_remain(BUS19_WEEKDAY_ORI)
+        h58s, m58s, s58s = ret_remain(BUS58_WEEKEND_SOLMOI)
+        h582s, m582s, s582s = ret_remain(BUS582_WEEKEND_SOLMOI)
+        h582g, m582g, s582g = ret_remain(BUS582_WEEKEND_GOOCHEONG)
+    if day == '일':
+        h19s, m19s, s19s = ret_remain(BUS19_WEEKEND_SOLMOI)
+        h19o, m19o, s19o = ret_remain(BUS19_WEEKEND_ORI)
+        h58s, m58s, s58s = ret_remain(BUS58_WEEKEND_SOLMOI)
+        h582s, m582s, s582s = ret_remain(BUS582_WEEKEND_SOLMOI)
+        h582g, m582g, s582g = ret_remain(BUS582_WEEKEND_GOOCHEONG)
 
     return render(request, 'nowbus/index.html', {
-        'day': today,
-        'h': 1,
-        'm': 2,
-        's': 3,
+        'today': today,
+        'day': day,
+        'h19s': h19s, 'm19s': m19s, 's19s': s19s,
+        'h19o': h19o, 'm19o': m19o, 's19o': s19o,
+        'h58s': h58s, 'm58s': m58s, 's58s': s58s,
+        'h582s': h582s, 'm582s': m582s, 's582s': s582s,
+        'h582g': h582g, 'm582g': m582g, 's582g': s582g,
     })
