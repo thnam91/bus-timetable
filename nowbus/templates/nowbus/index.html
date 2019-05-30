@@ -1,33 +1,30 @@
 {% extends 'layout.html' %}
-{% block today %} {{ today }} {% endblock today %} # 오늘 날짜, 시간
 
 {% block content %}
-    <div class="container col-sm-9">
-        <a class="nav-link disabled" href="#">{% now "지금은 Y년 F j일, H시 i분 s초 입니다." %}</a>
-        <br/>
-        <div class="alert alert-primary" align="center">
-            <b>{{ day }}요일 솔뫼마을</b> 정류장의 : <b>19번</b>, <b>58번</b>, <b>58-2번</b> 버스 시간을 알려드립니다.
-        </div>
-        <div class="row">
-            <button type="button" class="btn btn-warning col-sm-3" style="margin:15px">19번 버스 (오리역 → 솔뫼마을)</br>{{ h19s }}시 {{ m19s }}분 {{ s19s }}초</button>
-            <button type="button" class="btn btn-primary col-sm-3" style="margin:15px">58번 버스 (솔뫼마을 → 수지구청)</br>{{ h58s }}시 {{ m58s }}분 {{ s58s }}초</button>
-            <button type="button" class="btn btn-danger col-sm-3" style="margin:15px">58-2번 버스 (솔뫼마을 → 수지구청)</br>{{ h582s }}시 {{ m582s }}분 {{ s582s }}초</button>
-        </div>
+    <div class="alert alert-secondary" align="center">
+        {% now "지금은 Y년 F j일(l), H시 i분 입니다." %}
+    </div>
 
-        <br/>
-        <div class="alert alert-primary" align="center">
-            <b>{{ day }}요일 오리역</b> 정류장의 : <b>19번</b> 버스 시간을 알려드립니다.
-        </div>
+    <div class="alert alert-primary" align="center">
+        <b>솔뫼마을 정류장 : 19번, 58번, 58-2번 버스 시간</b>
         <div class="row">
-            <button type="button" class="btn btn-warning col-sm-3" style="margin:15px">19번 버스 (오리역 → 솔뫼마을)</br>{{ h19o }}시 {{ m19o }}분 {{ s19o }}초</button>
-        </div>
+            <button type="button" class="btn btn-warning col-sm-4" style="">19번 버스 (오리역 → 솔뫼마을)</br>{{ h19s }}시 {{ m19s }}분 {{ s19s }}초</button>
+            <button type="button" class="btn btn-primary col-sm-4" style="">58번 버스 (솔뫼마을 → 수지구청)</br>{{ h58s }}시 {{ m58s }}분 {{ s58s }}초</button>
+            <button type="button" class="btn btn-danger col-sm-4" style="">58-2번 버스 (솔뫼마을 → 수지구청)</br>{{ h582s }}시 {{ m582s }}분 {{ s582s }}초</button>
+        </div>        
+    </div>
 
-        <br/>
-        <div class="alert alert-primary" align="center">
-            <b>{{ day }}요일 수지구청</b> 정류장의 : <b>58번</b>, <b>58-2번</b> 버스 시간을 알려드립니다.
-        </div>
+    <div class="alert alert-primary" align="center">
+        <b>오리역 정류장 : 19번 버스 시간</b>
         <div class="row">
-            <button type="button" class="btn btn-danger col-sm-3" style="margin:15px">58-2번 버스 (솔뫼마을 → 수지구청)</br>{{ h582g }}시 {{ m582g }}분 {{ s582g }}초</button>
-        </div>
+            <button type="button" class="btn btn-warning col-sm-4" style="">19번 버스 (오리역 → 솔뫼마을)</br>{{ h19s }}시 {{ m19s }}분 {{ s19s }}초</button>
+        </div>        
+    </div>
+
+    <div class="alert alert-primary" align="center">
+        <b>수지구청 정류장 : 58-2번 버스 시간</b>
+        <div class="row">
+            <button type="button" class="btn btn-danger col-sm-4" style="">58-2번 버스 (솔뫼마을 → 수지구청)</br>{{ h582s }}시 {{ m582s }}분 {{ s582s }}초</button>
+        </div>        
     </div>
 {% endblock content %}
