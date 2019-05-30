@@ -7,18 +7,17 @@ def time_to_int(time):
     (h, m, s) = time.split(':')
     return int(h) * 3600 + int(m) * 60 + int(s)
 
-NOW = time_to_int(datetime.now().strftime('%H:%M:%S'))
-
 def ret_remain(timetable):
+    now = time_to_int(datetime.now().strftime('%H:%M:%S')) # 현재 시간
     for j in [time_to_int(i) for i in timetable]:
-        if NOW <= j: return str(timedelta(seconds=int(j-NOW))).split(':')
-
+        if now <= j:
+            print(now, j, str(timedelta(seconds=int(j-now))).split(':'))
+            return str(timedelta(seconds=int(j-now))).split(':')
 
 def index(request):
     # 0: 월, 1: 화, 2: 수, 3: 목, 4: 금, 5: 토, 6: 일
     days = ['월', '화', '수', '목', '금', '토', '일']
-    day = days[datetime.today().weekday()]
-    today = datetime.today().strftime("지금은 %Y년 %m월 %d일 (" + day + "),  %H시 %M분 %S초 입니다.")
+    day = days[datetime.today().weekday()] # 오늘 요일 : days[day]
 
     if day in '월화수목금':
         h19s, m19s, s19s = ret_remain(BUS19_WEEKDAY_SOLMOI)
@@ -40,7 +39,6 @@ def index(request):
         h582g, m582g, s582g = ret_remain(BUS582_WEEKEND_GOOCHEONG)
 
     return render(request, 'nowbus/index.html', {
-        'today': today,
         'day': day,
         'h19s': h19s, 'm19s': m19s, 's19s': s19s,
         'h19o': h19o, 'm19o': m19o, 's19o': s19o,
