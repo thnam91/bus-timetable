@@ -10,7 +10,9 @@ def time_to_int(time):
 def ret_remain(timetable):
     now = time_to_int(datetime.now().strftime('%H:%M:%S')) # 현재 시간
     for j in [time_to_int(i) for i in timetable]:
-        if now <= j: return str(timedelta(seconds=int(j-now))).split(':')
+        if now <= j: 
+            return str(timedelta(seconds=int(j-now))).split(':')
+    return ('-', '-', '-')
 
 def index(request):
     # 0: 월, 1: 화, 2: 수, 3: 목, 4: 금, 5: 토, 6: 일

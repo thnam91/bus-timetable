@@ -5,6 +5,7 @@
     <head>
         <meta charset='utf-8' />
         <meta name="viewport" content="width=device-width, user-scalable=no">
+        <META HTTP-EQUIV="refresh" CONTENT="1">
         <title>솔뫼마을 마을버스</title>
         <link rel="stylesheet" href="{% static "bootstrap-4.3.1/css/bootstrap.min.css" %}" />
         <link rel="shortcut icon" type="image/png" href="{% static 'bus.ico' %}"/>
@@ -26,5 +27,9 @@
         </nav>
         {% block content %}
         {% endblock content %}
+
+        <script src="{% static "jquery-3.4.1.min.js" %}"></script>
+        {% block script %}
+        {% endblock script %}
     </body>
 </html>
