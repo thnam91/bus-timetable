@@ -1,32 +1,32 @@
 {% extends 'layout.html' %}
   
-{% block content %}
-        <div class="alert alert-secondary" align="center">
-            {% now "지금은 Y년 F j일(l), H시 i분 입니다." %}
-        </div>
+    {% block content%}
+    <div class="alert alert-secondary" align="center">
+        {% now "지금은 Y년 F j일(l), H시 i분 입니다." %}
+    </div>
 
-        <div class="alert alert-primary" align="center">
-            <b>솔뫼마을 정류장</b>
-            <div class="row" style="margin-top:15px">
-                <button type="button" class="btn btn-warning col-sm-12" style="margin-bottom:15px">19번 버스 (오리역 → 솔뫼마을)</br>{{ h19s }}시 {{ m19s }}분 {{ s19s }}초</button>
-                <button type="button" class="btn btn-primary col-sm-12" style="margin-bottom:15px">58번 버스 (솔뫼마을 → 수지구청)</br>{{ h58s }}시 {{ m58s }}분 {{ s58s }}초</button>
-                <button type="button" class="btn btn-danger col-sm-12" style="">58-2번 버스 (솔뫼마을 → 수지구청)</br>{{ h582s }}시 {{ m582s }}분 {{ s582s }}초</button>
-            </div>
+    <div class="alert alert-primary" align="center">
+        <b>솔뫼마을 정문 정류장</b>
+        <div class="row" style="margin-top:15px">
+            <button type="button" class="btn btn-warning col-sm-12" style="margin-bottom:15px">19번 버스 (오리역 → 솔뫼마을)</br>{{ h19s }}시 {{ m19s }}분 {{ s19s }}초</button>
+            <button type="button" class="btn btn-primary col-sm-12" style="margin-bottom:15px">58번 버스 (솔뫼마을 → 수지구청)</br>{{ h58s }}시 {{ m58s }}분 {{ s58s }}초</button>
+            <button type="button" class="btn btn-danger col-sm-12" style="">58-2번 버스 (솔뫼마을 → 수지구청)</br>{{ h582s }}시 {{ m582s }}분 {{ s582s }}초</button>
         </div>
+    </div>
 
-        <div class="alert alert-primary" align="center">
-            <b>오리역 정류장</b>
-            <div class="row" style="margin-top:15px">
-                <button type="button" class="btn btn-warning col-sm-12">19번 버스 (오리역 → 솔뫼마을)</br>{{ h19s }}시 {{ m19s }}분 {{ s19s }}초</button>
-            </div>
+    <div class="alert alert-primary" align="center">
+        <b>오리역 정류장</b>
+        <div class="row" style="margin-top:15px">
+            <button type="button" class="btn btn-warning col-sm-12">19번 버스 (오리역 → 솔뫼마을)</br>{{ h19s }}시 {{ m19s }}분 {{ s19s }}초</button>
         </div>
+    </div>
 
-        <div class="alert alert-primary" align="center">
-            <b>수지구청 정류장</b>
-            <div class="row" style="margin-top:15px">
-                <button type="button" class="btn btn-danger col-sm-12">58-2번 버스 (솔뫼마을 → 수지구청)</br>{{ h582s }}시 {{ m582s }}분 {{ s582s }}초</button>
-            </div>
+    <div class="alert alert-primary" align="center">
+        <b>수지구청 정류장</b>
+        <div class="row" style="margin-top:15px">
+            <button type="button" class="btn btn-danger col-sm-12">58-2번 버스 (솔뫼마을 → 수지구청)</br>{{ h582s }}시 {{ m582s }}분 {{ s582s }}초</button>
         </div>
+    </div>
 {% endblock content %}
 
 {% block script %}
